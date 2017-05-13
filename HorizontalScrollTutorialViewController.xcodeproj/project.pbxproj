@@ -1,0 +1,539 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		878CEE3C1EC71CDA005A79E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878CEE3B1EC71CDA005A79E9 /* AppDelegate.swift */; };
+		878CEE3E1EC71CDA005A79E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878CEE3D1EC71CDA005A79E9 /* ViewController.swift */; };
+		878CEE411EC71CDA005A79E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 878CEE3F1EC71CDA005A79E9 /* Main.storyboard */; };
+		878CEE431EC71CDA005A79E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 878CEE421EC71CDA005A79E9 /* Assets.xcassets */; };
+		878CEE461EC71CDA005A79E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 878CEE441EC71CDA005A79E9 /* LaunchScreen.storyboard */; };
+		878CEE511EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878CEE501EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests.swift */; };
+		878CEE5C1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878CEE5B1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		878CEE4D1EC71CDA005A79E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 878CEE301EC71CD9005A79E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 878CEE371EC71CD9005A79E9;
+			remoteInfo = HorizontalScrollTutorialViewController;
+		};
+		878CEE581EC71CDA005A79E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 878CEE301EC71CD9005A79E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 878CEE371EC71CD9005A79E9;
+			remoteInfo = HorizontalScrollTutorialViewController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		878CEE381EC71CDA005A79E9 /* HorizontalScrollTutorialViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorizontalScrollTutorialViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		878CEE3B1EC71CDA005A79E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		878CEE3D1EC71CDA005A79E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		878CEE401EC71CDA005A79E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		878CEE421EC71CDA005A79E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		878CEE451EC71CDA005A79E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		878CEE471EC71CDA005A79E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		878CEE4C1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HorizontalScrollTutorialViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		878CEE501EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollTutorialViewControllerTests.swift; sourceTree = "<group>"; };
+		878CEE521EC71CDA005A79E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		878CEE571EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HorizontalScrollTutorialViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		878CEE5B1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollTutorialViewControllerUITests.swift; sourceTree = "<group>"; };
+		878CEE5D1EC71CDA005A79E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		878CEE351EC71CD9005A79E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		878CEE491EC71CDA005A79E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		878CEE541EC71CDA005A79E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		878CEE2F1EC71CD9005A79E9 = {
+			isa = PBXGroup;
+			children = (
+				878CEE3A1EC71CDA005A79E9 /* HorizontalScrollTutorialViewController */,
+				878CEE4F1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests */,
+				878CEE5A1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests */,
+				878CEE391EC71CDA005A79E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		878CEE391EC71CDA005A79E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				878CEE381EC71CDA005A79E9 /* HorizontalScrollTutorialViewController.app */,
+				878CEE4C1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests.xctest */,
+				878CEE571EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		878CEE3A1EC71CDA005A79E9 /* HorizontalScrollTutorialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				878CEE3B1EC71CDA005A79E9 /* AppDelegate.swift */,
+				878CEE3D1EC71CDA005A79E9 /* ViewController.swift */,
+				878CEE3F1EC71CDA005A79E9 /* Main.storyboard */,
+				878CEE421EC71CDA005A79E9 /* Assets.xcassets */,
+				878CEE441EC71CDA005A79E9 /* LaunchScreen.storyboard */,
+				878CEE471EC71CDA005A79E9 /* Info.plist */,
+			);
+			path = HorizontalScrollTutorialViewController;
+			sourceTree = "<group>";
+		};
+		878CEE4F1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				878CEE501EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests.swift */,
+				878CEE521EC71CDA005A79E9 /* Info.plist */,
+			);
+			path = HorizontalScrollTutorialViewControllerTests;
+			sourceTree = "<group>";
+		};
+		878CEE5A1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				878CEE5B1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.swift */,
+				878CEE5D1EC71CDA005A79E9 /* Info.plist */,
+			);
+			path = HorizontalScrollTutorialViewControllerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		878CEE371EC71CD9005A79E9 /* HorizontalScrollTutorialViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 878CEE601EC71CDA005A79E9 /* Build configuration list for PBXNativeTarget "HorizontalScrollTutorialViewController" */;
+			buildPhases = (
+				878CEE341EC71CD9005A79E9 /* Sources */,
+				878CEE351EC71CD9005A79E9 /* Frameworks */,
+				878CEE361EC71CD9005A79E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HorizontalScrollTutorialViewController;
+			productName = HorizontalScrollTutorialViewController;
+			productReference = 878CEE381EC71CDA005A79E9 /* HorizontalScrollTutorialViewController.app */;
+			productType = "com.apple.product-type.application";
+		};
+		878CEE4B1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 878CEE631EC71CDA005A79E9 /* Build configuration list for PBXNativeTarget "HorizontalScrollTutorialViewControllerTests" */;
+			buildPhases = (
+				878CEE481EC71CDA005A79E9 /* Sources */,
+				878CEE491EC71CDA005A79E9 /* Frameworks */,
+				878CEE4A1EC71CDA005A79E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				878CEE4E1EC71CDA005A79E9 /* PBXTargetDependency */,
+			);
+			name = HorizontalScrollTutorialViewControllerTests;
+			productName = HorizontalScrollTutorialViewControllerTests;
+			productReference = 878CEE4C1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		878CEE561EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 878CEE661EC71CDA005A79E9 /* Build configuration list for PBXNativeTarget "HorizontalScrollTutorialViewControllerUITests" */;
+			buildPhases = (
+				878CEE531EC71CDA005A79E9 /* Sources */,
+				878CEE541EC71CDA005A79E9 /* Frameworks */,
+				878CEE551EC71CDA005A79E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				878CEE591EC71CDA005A79E9 /* PBXTargetDependency */,
+			);
+			name = HorizontalScrollTutorialViewControllerUITests;
+			productName = HorizontalScrollTutorialViewControllerUITests;
+			productReference = 878CEE571EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		878CEE301EC71CD9005A79E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "hideyuki okuni";
+				TargetAttributes = {
+					878CEE371EC71CD9005A79E9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = M2CCPT32P8;
+						ProvisioningStyle = Automatic;
+					};
+					878CEE4B1EC71CDA005A79E9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = M2CCPT32P8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 878CEE371EC71CD9005A79E9;
+					};
+					878CEE561EC71CDA005A79E9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = M2CCPT32P8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 878CEE371EC71CD9005A79E9;
+					};
+				};
+			};
+			buildConfigurationList = 878CEE331EC71CD9005A79E9 /* Build configuration list for PBXProject "HorizontalScrollTutorialViewController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 878CEE2F1EC71CD9005A79E9;
+			productRefGroup = 878CEE391EC71CDA005A79E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				878CEE371EC71CD9005A79E9 /* HorizontalScrollTutorialViewController */,
+				878CEE4B1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests */,
+				878CEE561EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		878CEE361EC71CD9005A79E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878CEE461EC71CDA005A79E9 /* LaunchScreen.storyboard in Resources */,
+				878CEE431EC71CDA005A79E9 /* Assets.xcassets in Resources */,
+				878CEE411EC71CDA005A79E9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		878CEE4A1EC71CDA005A79E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		878CEE551EC71CDA005A79E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		878CEE341EC71CD9005A79E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878CEE3E1EC71CDA005A79E9 /* ViewController.swift in Sources */,
+				878CEE3C1EC71CDA005A79E9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		878CEE481EC71CDA005A79E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878CEE511EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		878CEE531EC71CDA005A79E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878CEE5C1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		878CEE4E1EC71CDA005A79E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 878CEE371EC71CD9005A79E9 /* HorizontalScrollTutorialViewController */;
+			targetProxy = 878CEE4D1EC71CDA005A79E9 /* PBXContainerItemProxy */;
+		};
+		878CEE591EC71CDA005A79E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 878CEE371EC71CD9005A79E9 /* HorizontalScrollTutorialViewController */;
+			targetProxy = 878CEE581EC71CDA005A79E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		878CEE3F1EC71CDA005A79E9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				878CEE401EC71CDA005A79E9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		878CEE441EC71CDA005A79E9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				878CEE451EC71CDA005A79E9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		878CEE5E1EC71CDA005A79E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		878CEE5F1EC71CDA005A79E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		878CEE611EC71CDA005A79E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = M2CCPT32P8;
+				INFOPLIST_FILE = HorizontalScrollTutorialViewController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.okuni.HorizontalScrollTutorialViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		878CEE621EC71CDA005A79E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = M2CCPT32P8;
+				INFOPLIST_FILE = HorizontalScrollTutorialViewController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.okuni.HorizontalScrollTutorialViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		878CEE641EC71CDA005A79E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = M2CCPT32P8;
+				INFOPLIST_FILE = HorizontalScrollTutorialViewControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.okuni.HorizontalScrollTutorialViewControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HorizontalScrollTutorialViewController.app/HorizontalScrollTutorialViewController";
+			};
+			name = Debug;
+		};
+		878CEE651EC71CDA005A79E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = M2CCPT32P8;
+				INFOPLIST_FILE = HorizontalScrollTutorialViewControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.okuni.HorizontalScrollTutorialViewControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HorizontalScrollTutorialViewController.app/HorizontalScrollTutorialViewController";
+			};
+			name = Release;
+		};
+		878CEE671EC71CDA005A79E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = M2CCPT32P8;
+				INFOPLIST_FILE = HorizontalScrollTutorialViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.okuni.HorizontalScrollTutorialViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = HorizontalScrollTutorialViewController;
+			};
+			name = Debug;
+		};
+		878CEE681EC71CDA005A79E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = M2CCPT32P8;
+				INFOPLIST_FILE = HorizontalScrollTutorialViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.okuni.HorizontalScrollTutorialViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = HorizontalScrollTutorialViewController;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		878CEE331EC71CD9005A79E9 /* Build configuration list for PBXProject "HorizontalScrollTutorialViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				878CEE5E1EC71CDA005A79E9 /* Debug */,
+				878CEE5F1EC71CDA005A79E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		878CEE601EC71CDA005A79E9 /* Build configuration list for PBXNativeTarget "HorizontalScrollTutorialViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				878CEE611EC71CDA005A79E9 /* Debug */,
+				878CEE621EC71CDA005A79E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		878CEE631EC71CDA005A79E9 /* Build configuration list for PBXNativeTarget "HorizontalScrollTutorialViewControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				878CEE641EC71CDA005A79E9 /* Debug */,
+				878CEE651EC71CDA005A79E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		878CEE661EC71CDA005A79E9 /* Build configuration list for PBXNativeTarget "HorizontalScrollTutorialViewControllerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				878CEE671EC71CDA005A79E9 /* Debug */,
+				878CEE681EC71CDA005A79E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 878CEE301EC71CD9005A79E9 /* Project object */;
+}
