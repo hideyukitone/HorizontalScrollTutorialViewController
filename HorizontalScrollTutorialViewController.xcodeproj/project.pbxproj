@@ -14,6 +14,7 @@
 		878CEE461EC71CDA005A79E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 878CEE441EC71CDA005A79E9 /* LaunchScreen.storyboard */; };
 		878CEE511EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878CEE501EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerTests.swift */; };
 		878CEE5C1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878CEE5B1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.swift */; };
+		878CEE6A1EC71CFE005A79E9 /* HorizontalScrollTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878CEE691EC71CFE005A79E9 /* HorizontalScrollTutorialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		878CEE571EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HorizontalScrollTutorialViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		878CEE5B1EC71CDA005A79E9 /* HorizontalScrollTutorialViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollTutorialViewControllerUITests.swift; sourceTree = "<group>"; };
 		878CEE5D1EC71CDA005A79E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		878CEE691EC71CFE005A79E9 /* HorizontalScrollTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalScrollTutorialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				878CEE421EC71CDA005A79E9 /* Assets.xcassets */,
 				878CEE441EC71CDA005A79E9 /* LaunchScreen.storyboard */,
 				878CEE471EC71CDA005A79E9 /* Info.plist */,
+				878CEE691EC71CFE005A79E9 /* HorizontalScrollTutorialViewController.swift */,
 			);
 			path = HorizontalScrollTutorialViewController;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				878CEE3E1EC71CDA005A79E9 /* ViewController.swift in Sources */,
 				878CEE3C1EC71CDA005A79E9 /* AppDelegate.swift in Sources */,
+				878CEE6A1EC71CFE005A79E9 /* HorizontalScrollTutorialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +423,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M2CCPT32P8;
 				INFOPLIST_FILE = HorizontalScrollTutorialViewController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.okuni.HorizontalScrollTutorialViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,6 +437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M2CCPT32P8;
 				INFOPLIST_FILE = HorizontalScrollTutorialViewController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.okuni.HorizontalScrollTutorialViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
