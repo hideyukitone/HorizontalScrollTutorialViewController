@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol HorizontalScrollTutorialViewControllerDelegate {
+    func horizontalScrollTutorialViewControllerDidFinish()
+}
 
 struct HorizontalScrollTutorialItem {
     let images: [UIImage]
@@ -27,6 +30,8 @@ class HorizontalScrollTutorialViewController: UIViewController {
     var nextButtonName = "次へ"
     var doneButtonName = "閉じる"
     var isPrefersStatusBarHidden = true
+    
+    var delegate: HorizontalScrollTutorialViewControllerDelegate?
     
     init(tutorialItems: [HorizontalScrollTutorialItem]) {
         scrollView = UIScrollView(frame: .zero)
@@ -97,7 +102,7 @@ class HorizontalScrollTutorialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -145,7 +150,9 @@ class HorizontalScrollTutorialViewController: UIViewController {
     }
     
     func pressClose() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.delegate?.horizontalScrollTutorialViewControllerDidFinish()
+        }
     }
     
     func pressNext() {
