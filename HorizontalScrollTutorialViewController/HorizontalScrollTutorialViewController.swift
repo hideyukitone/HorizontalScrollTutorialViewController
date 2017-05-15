@@ -26,14 +26,15 @@ class HorizontalScrollTutorialViewController: UIViewController {
     fileprivate let pageControl: UIPageControl
     fileprivate let tutorialItems: [HorizontalScrollTutorialItem]
     
-    var skipButtonName = "スキップ"
-    var nextButtonName = "次へ"
-    var doneButtonName = "閉じる"
-    var isPrefersStatusBarHidden = true
+    private var titleName: String?
+    private var skipButtonName: String
+    fileprivate var nextButtonName: String
+    fileprivate var doneButtonName: String
+    private var isPrefersStatusBarHidden: Bool
     
     var delegate: HorizontalScrollTutorialViewControllerDelegate?
     
-    init(tutorialItems: [HorizontalScrollTutorialItem]) {
+    init(tutorialItems: [HorizontalScrollTutorialItem], titleName: String? = nil, skipButtonName: String = "スキップ", nextButtonName: String = "次へ", doneButtonName: String = "閉じる", isPrefersStatusBarHidden: Bool = true) {
         scrollView = UIScrollView(frame: .zero)
         bottomLabel = UILabel(frame: .zero)
         skipButton = UIButton(frame: .zero)
@@ -41,11 +42,17 @@ class HorizontalScrollTutorialViewController: UIViewController {
         pageControl = UIPageControl(frame: .zero)
         self.tutorialItems = tutorialItems
         
+        self.titleName = titleName
+        self.skipButtonName = skipButtonName
+        self.nextButtonName = nextButtonName
+        self.doneButtonName = doneButtonName
+        self.isPrefersStatusBarHidden = isPrefersStatusBarHidden
+        
         super.init(nibName: nil, bundle: nil)
         
         self.modalPresentationStyle = .overCurrentContext
         
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         
         bottomLabel.backgroundColor = .black
         self.view.addSubview(bottomLabel)
@@ -57,6 +64,7 @@ class HorizontalScrollTutorialViewController: UIViewController {
         
         skipButton.setTitle(skipButtonName, for: .normal)
         skipButton.setTitleColor(UIColor.lightGray, for: .highlighted)
+        skipButton.titleLabel?.setMinimumFontSize(ofSize: 5)
         self.view.addSubview(skipButton)
         skipButton.translatesAutoresizingMaskIntoConstraints = false
         skipButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -67,6 +75,7 @@ class HorizontalScrollTutorialViewController: UIViewController {
         
         nextButton.setTitle(nextButtonName, for: .normal)
         nextButton.setTitleColor(UIColor.lightGray, for: .highlighted)
+        nextButton.titleLabel?.setMinimumFontSize(ofSize: 5)
         self.view.addSubview(nextButton)
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -85,6 +94,25 @@ class HorizontalScrollTutorialViewController: UIViewController {
         pageControl.addTarget(self, action: #selector(self.pressPageControl), for: .touchUpInside)
         pageControl.addTarget(self, action: #selector(self.changePageControl), for: UIControlEvents.valueChanged)
         
+        var topLabel: UILabel? = nil
+        if let titleName = titleName {
+            topLabel = UILabel(frame: .zero)
+            if let topLabel = topLabel {
+                topLabel.text = titleName
+                topLabel.font = UIFont.systemFont(ofSize: 30)
+                topLabel.setMinimumFontSize(ofSize: 5)
+                topLabel.textAlignment = .center
+                topLabel.textColor = .white
+                topLabel.backgroundColor = .black
+                self.view.addSubview(topLabel)
+                topLabel.translatesAutoresizingMaskIntoConstraints = false
+                topLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+                topLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+                topLabel.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+                topLabel.heightAnchor.constraint(equalTo: bottomLabel.heightAnchor).isActive = true
+            }
+        }
+        
         scrollView.delegate = self
         scrollView.isScrollEnabled = true
         scrollView.isPagingEnabled = true
@@ -92,7 +120,7 @@ class HorizontalScrollTutorialViewController: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: topLabel?.bottomAnchor ?? self.topLayoutGuide.bottomAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: skipButton.topAnchor).isActive = true
     }
     
@@ -199,5 +227,12 @@ extension HorizontalScrollTutorialViewController: UIScrollViewDelegate {
         }
         
         changePageControl()
+    }
+}
+
+fileprivate extension UILabel {
+    func setMinimumFontSize(ofSize: CGFloat) {
+        self.adjustsFontSizeToFitWidth = true
+        self.minimumScaleFactor = ofSize / self.font.pointSize
     }
 }
