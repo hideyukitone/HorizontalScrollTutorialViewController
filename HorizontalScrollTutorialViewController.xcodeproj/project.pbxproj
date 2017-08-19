@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8764283E1F47E22C00FE41E6 /* test.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8764283D1F47E22C00FE41E6 /* test.gif */; };
+		876428401F47F2D900FE41E6 /* test2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8764283F1F47F2D900FE41E6 /* test2.gif */; };
+		876428421F47F48C00FE41E6 /* test3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 876428411F47F48C00FE41E6 /* test3.gif */; };
+		876428441F47F4B700FE41E6 /* test4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 876428431F47F4B600FE41E6 /* test4.gif */; };
 		878CEE3C1EC71CDA005A79E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878CEE3B1EC71CDA005A79E9 /* AppDelegate.swift */; };
 		878CEE3E1EC71CDA005A79E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878CEE3D1EC71CDA005A79E9 /* ViewController.swift */; };
 		878CEE411EC71CDA005A79E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 878CEE3F1EC71CDA005A79E9 /* Main.storyboard */; };
@@ -35,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8764283D1F47E22C00FE41E6 /* test.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = test.gif; sourceTree = "<group>"; };
+		8764283F1F47F2D900FE41E6 /* test2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = test2.gif; sourceTree = "<group>"; };
+		876428411F47F48C00FE41E6 /* test3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = test3.gif; sourceTree = "<group>"; };
+		876428431F47F4B600FE41E6 /* test4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = test4.gif; sourceTree = "<group>"; };
 		878CEE381EC71CDA005A79E9 /* HorizontalScrollTutorialViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorizontalScrollTutorialViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		878CEE3B1EC71CDA005A79E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		878CEE3D1EC71CDA005A79E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +107,10 @@
 		878CEE3A1EC71CDA005A79E9 /* HorizontalScrollTutorialViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8764283D1F47E22C00FE41E6 /* test.gif */,
+				8764283F1F47F2D900FE41E6 /* test2.gif */,
+				876428411F47F48C00FE41E6 /* test3.gif */,
+				876428431F47F4B600FE41E6 /* test4.gif */,
 				878CEE3B1EC71CDA005A79E9 /* AppDelegate.swift */,
 				878CEE3D1EC71CDA005A79E9 /* ViewController.swift */,
 				878CEE3F1EC71CDA005A79E9 /* Main.storyboard */,
@@ -238,8 +250,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				876428401F47F2D900FE41E6 /* test2.gif in Resources */,
+				8764283E1F47E22C00FE41E6 /* test.gif in Resources */,
+				876428421F47F48C00FE41E6 /* test3.gif in Resources */,
 				878CEE461EC71CDA005A79E9 /* LaunchScreen.storyboard in Resources */,
 				878CEE431EC71CDA005A79E9 /* Assets.xcassets in Resources */,
+				876428441F47F4B700FE41E6 /* test4.gif in Resources */,
 				878CEE411EC71CDA005A79E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +538,7 @@
 				878CEE621EC71CDA005A79E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		878CEE631EC71CDA005A79E9 /* Build configuration list for PBXNativeTarget "HorizontalScrollTutorialViewControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +547,7 @@
 				878CEE651EC71CDA005A79E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		878CEE661EC71CDA005A79E9 /* Build configuration list for PBXNativeTarget "HorizontalScrollTutorialViewControllerUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +556,7 @@
 				878CEE681EC71CDA005A79E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
