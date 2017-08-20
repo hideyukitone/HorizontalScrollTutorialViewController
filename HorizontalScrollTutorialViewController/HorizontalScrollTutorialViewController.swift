@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageIO
 
 protocol HorizontalScrollTutorialViewControllerDelegate {
     func horizontalScrollTutorialViewControllerDidFinish()
@@ -14,6 +15,22 @@ protocol HorizontalScrollTutorialViewControllerDelegate {
 
 struct HorizontalScrollTutorialItem {
     let fileName: String
+
+    private var gifData: CFData? {
+        guard let gifFile = Bundle.main.path(forResource: fileName, ofType: "gif"), let gifData = NSData(contentsOfFile: gifFile) else {
+            return nil
+        }
+
+        return gifData as CFData
+    }
+
+    var images: [UIImage] {
+        guard let data = gifData, let cgImageSource = CGImageSourceCreateWithData(data, nil) else {
+            return []
+        }
+
+        return (0...CGImageSourceGetCount(cgImageSource)).flatMap{CGImageSourceCreateImageAtIndex(cgImageSource, $0, nil)}.map{UIImage(cgImage: $0)}
+    }
 }
 
 class HorizontalScrollTutorialViewController: UIViewController {
@@ -144,35 +161,25 @@ class HorizontalScrollTutorialViewController: UIViewController {
             return
         }
         
-        scrollView.subviews.flatMap{$0 as? UIWebView}.forEach{$0.removeFromSuperview()}
-        
+        scrollView.subviews.flatMap{$0 as? UIImageView}.forEach{$0.stopAnimating() ; $0.removeFromSuperview()}
+
         for (i, tutorialItem) in tutorialItems.enumerated() {
-            guard let gifFile = Bundle.main.path(forResource: tutorialItem.fileName, ofType: "gif"), let gifData = NSData(contentsOfFile: gifFile), let url = URL(string: "https://www.google.co.jp") else {
-                return
+            let images = tutorialItem.images
+            let imageView = UIImageView(image: images.first)
+
+            imageView.frame.size = scrollView.frame.size
+            imageView.frame.origin.y = 0
+            imageView.frame.origin.x = CGFloat(i) * scrollView.frame.size.width
+            imageView.contentMode = .scaleAspectFit
+            imageView.tag = i
+
+            if images.count > 1 {
+                imageView.animationImages = images
+                imageView.animationDuration = 3
+                imageView.animationRepeatCount = 1
             }
 
-            let webView = UIWebView(frame: .zero)
-            webView.backgroundColor = .clear
-            webView.isOpaque = false
-            webView.scalesPageToFit = true
-            webView.isUserInteractionEnabled = false
-            self.view.addSubview(webView)
-            webView.frame.size = scrollView.frame.size
-            webView.frame.origin.y = 0
-            webView.frame.origin.x = CGFloat(i) * scrollView.frame.size.width
-//            webView.translatesAutoresizingMaskIntoConstraints = false
-//            webView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-//            webView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-//            webView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-//            webView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-
-            webView.load(gifData as Data, mimeType: "image/gif", textEncodingName: "utf-8", baseURL: url)
-            webView.scrollView.isScrollEnabled = false
-            webView.scrollView.showsHorizontalScrollIndicator = false
-            webView.scrollView.showsVerticalScrollIndicator = false
-            webView.tag = i
-            
-            scrollView.addSubview(webView)
+            scrollView.addSubview(imageView)
         }
         
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width * CGFloat(tutorialItems.count), height: scrollView.frame.size.height)
@@ -210,10 +217,9 @@ class HorizontalScrollTutorialViewController: UIViewController {
     }
     
     func changePageControl() {
-        //カレントページを再生してそれ以外を停止
-//        scrollView.subviews.flatMap{$0 as? UIWebView}.filter{$0.tag == pageControl.currentPage && $0.animationImages?.count ?? 0 > 1}.forEach{$0.stopAnimating() ; $0.startAnimating()}
-//        
-//        scrollView.subviews.flatMap{$0 as? UIWebView}.filter{$0.tag != pageControl.currentPage && $0.animationImages?.count ?? 0 > 1}.forEach{$0.stopAnimating()}
+        scrollView.subviews.flatMap{$0 as? UIImageView}.filter{$0.tag == pageControl.currentPage && $0.animationImages?.count ?? 0 > 1}.forEach{$0.stopAnimating() ; $0.image = $0.animationImages?.last ; $0.startAnimating()}
+
+        scrollView.subviews.flatMap{$0 as? UIImageView}.filter{$0.tag != pageControl.currentPage && $0.animationImages?.count ?? 0 > 1}.forEach{$0.stopAnimating() ; $0.image = $0.animationImages?.first}
     }
     
     private func movePage(page: Int, animated: Bool) {

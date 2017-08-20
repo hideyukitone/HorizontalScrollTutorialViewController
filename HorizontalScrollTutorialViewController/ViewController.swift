@@ -27,10 +27,10 @@ class ViewController: UIViewController {
     @IBAction func pressTutorial(_ sender: Any) {
         let controller = HorizontalScrollTutorialViewController(
             tutorialItems: [
-                HorizontalScrollTutorialItem(fileName: "test")
-                , HorizontalScrollTutorialItem(fileName: "test2")
-                , HorizontalScrollTutorialItem(fileName: "test3")
-                , HorizontalScrollTutorialItem(fileName: "test4")
+                HorizontalScrollTutorialItem(fileName: "1")
+                , HorizontalScrollTutorialItem(fileName: "2")
+                , HorizontalScrollTutorialItem(fileName: "3")
+                , HorizontalScrollTutorialItem(fileName: "4")
             ]
             , titleName: "遊び方")
         
