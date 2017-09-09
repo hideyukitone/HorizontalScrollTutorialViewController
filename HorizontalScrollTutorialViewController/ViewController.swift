@@ -24,16 +24,28 @@ class ViewController: UIViewController {
         return true
     }
     
-    @IBAction func pressTutorial(_ sender: Any) {
+    @IBAction func pressTutorialForGif(_ sender: Any) {
+        let controller = HorizontalScrollTutorialViewController(tutorialItems: [.gif("1"), .gif("2"), .gif("3"), .gif("4")])
+        
+        self.present(controller, animated: true, completion: nil)
+    }
+
+    @IBAction func pressTutorialForImages(_ sender: Any) {
         let controller = HorizontalScrollTutorialViewController(
             tutorialItems: [
-                HorizontalScrollTutorialItem(fileName: "1")
-                , HorizontalScrollTutorialItem(fileName: "2")
-                , HorizontalScrollTutorialItem(fileName: "3")
-                , HorizontalScrollTutorialItem(fileName: "4")
+                .images([#imageLiteral(resourceName: "tutorial1_1"), #imageLiteral(resourceName: "tutorial1_2"), #imageLiteral(resourceName: "tutorial1_3"), #imageLiteral(resourceName: "tutorial1_4")])
+                , .images([#imageLiteral(resourceName: "tutorial2_1"), #imageLiteral(resourceName: "tutorial2_2"), #imageLiteral(resourceName: "tutorial2_3"), #imageLiteral(resourceName: "tutorial2_4")])
+                , .images([#imageLiteral(resourceName: "tutorial3_1"), #imageLiteral(resourceName: "tutorial3_2"), #imageLiteral(resourceName: "tutorial3_3"), #imageLiteral(resourceName: "tutorial3_4")])
+                , .images([#imageLiteral(resourceName: "tutorial4")])
             ]
             , titleName: "遊び方")
-        
+
+        self.present(controller, animated: true, completion: nil)
+    }
+
+    @IBAction func pressTutorialForImage(_ sender: Any) {
+        let controller = HorizontalScrollTutorialViewController(tutorialItems: [.images([#imageLiteral(resourceName: "subquest_help")])])
+
         self.present(controller, animated: true, completion: nil)
     }
 

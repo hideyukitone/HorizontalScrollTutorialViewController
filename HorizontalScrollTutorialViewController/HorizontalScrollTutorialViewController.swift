@@ -13,23 +13,37 @@ protocol HorizontalScrollTutorialViewControllerDelegate {
     func horizontalScrollTutorialViewControllerDidFinish()
 }
 
-struct HorizontalScrollTutorialItem {
-    let fileName: String
+enum HorizontalScrollTutorialItem {
+    case image(UIImage)
+    case images([UIImage])
+    case gif(String)
 
     private var gifData: CFData? {
-        guard let gifFile = Bundle.main.path(forResource: fileName, ofType: "gif"), let gifData = NSData(contentsOfFile: gifFile) else {
+        switch self {
+        case .image, .images:
             return nil
-        }
+        case .gif(let fileName):
+            guard let gifFile = Bundle.main.path(forResource: fileName, ofType: "gif"), let gifData = NSData(contentsOfFile: gifFile) else {
+                return nil
+            }
 
-        return gifData as CFData
+            return gifData as CFData
+        }
     }
 
     var images: [UIImage] {
-        guard let data = gifData, let cgImageSource = CGImageSourceCreateWithData(data, nil) else {
-            return []
-        }
+        switch self {
+        case .image(let image):
+            return [image]
+        case .images(let images):
+            return images
+        case .gif:
+            guard let data = gifData, let cgImageSource = CGImageSourceCreateWithData(data, nil) else {
+                return []
+            }
 
-        return (0...CGImageSourceGetCount(cgImageSource)).flatMap{CGImageSourceCreateImageAtIndex(cgImageSource, $0, nil)}.map{UIImage(cgImage: $0)}
+            return (0...CGImageSourceGetCount(cgImageSource)).flatMap{CGImageSourceCreateImageAtIndex(cgImageSource, $0, nil)}.map{UIImage(cgImage: $0)}
+        }
     }
 
     func getImagesInBackground(completion: @escaping ([UIImage]) -> Void) {
@@ -147,6 +161,8 @@ class HorizontalScrollTutorialViewController: UIViewController {
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: topLabel?.bottomAnchor ?? self.topLayoutGuide.bottomAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: skipButton.topAnchor).isActive = true
+
+        setButton(currentPage: pageControl.currentPage)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -282,6 +298,16 @@ class HorizontalScrollTutorialViewController: UIViewController {
             changePageControl()
         }
     }
+
+    fileprivate func setButton(currentPage: Int) {
+        skipButton.isHidden = currentPage == tutorialItems.count - 1
+
+        if skipButton.isHidden {
+            nextButton.setTitle(doneButtonName, for: .normal)
+        }else {
+            nextButton.setTitle(nextButtonName, for: .normal)
+        }
+    }
 }
 
 extension HorizontalScrollTutorialViewController: UIScrollViewDelegate {
@@ -292,13 +318,7 @@ extension HorizontalScrollTutorialViewController: UIScrollViewDelegate {
         }
 
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
-        skipButton.isHidden = pageControl.currentPage == tutorialItems.count - 1
-
-        if skipButton.isHidden {
-            nextButton.setTitle(doneButtonName, for: .normal)
-        }else {
-            nextButton.setTitle(nextButtonName, for: .normal)
-        }
+        setButton(currentPage: pageControl.currentPage)
         
         changePageControl()
     }
