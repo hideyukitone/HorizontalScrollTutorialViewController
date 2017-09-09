@@ -121,6 +121,7 @@ class HorizontalScrollTutorialViewController: UIViewController {
         nextButton.heightAnchor.constraint(equalTo: skipButton.heightAnchor).isActive = true
         nextButton.addTarget(self, action: #selector(self.pressNext), for: .touchUpInside)
 
+        pageControl.isHidden = tutorialItems.count <= 1
         pageControl.numberOfPages = tutorialItems.count
         self.view.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
