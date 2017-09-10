@@ -231,6 +231,7 @@ class HorizontalScrollTutorialViewController: UIViewController {
     }
 
     func pressClose() {
+        self.view.backgroundColor = .clear
         self.dismiss(animated: true) {
             self.delegate?.horizontalScrollTutorialViewControllerDidFinish()
         }
