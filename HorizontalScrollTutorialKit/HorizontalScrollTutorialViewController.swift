@@ -7,53 +7,12 @@
 //
 
 import UIKit
-import ImageIO
-
-enum HorizontalScrollTutorialItem {
-    case image(UIImage)
-    case images([UIImage])
-    case gif(String)
-
-    private var gifData: CFData? {
-        switch self {
-        case .image, .images:
-            return nil
-        case .gif(let fileName):
-            guard let gifFile = Bundle.main.path(forResource: fileName, ofType: "gif"), let gifData = NSData(contentsOfFile: gifFile) else {
-                return nil
-            }
-
-            return gifData as CFData
-        }
-    }
-
-    var images: [UIImage] {
-        switch self {
-        case .image(let image):
-            return [image]
-        case .images(let images):
-            return images
-        case .gif:
-            guard let data = gifData, let cgImageSource = CGImageSourceCreateWithData(data, nil) else {
-                return []
-            }
-
-            return (0...CGImageSourceGetCount(cgImageSource)).flatMap{CGImageSourceCreateImageAtIndex(cgImageSource, $0, nil)}.map{UIImage(cgImage: $0)}
-        }
-    }
-
-    func getImagesInBackground(completion: @escaping ([UIImage]) -> Void) {
-        DispatchQueue.global().async {
-            completion(self.images)
-        }
-    }
-}
 
 protocol HorizontalScrollTutorialViewControllerDelegate: class {
     func horizontalScrollTutorialViewControllerDidFinish()
 }
 
-class HorizontalScrollTutorialViewController: UIViewController {
+open class HorizontalScrollTutorialViewController: UIViewController {
     weak var delegate: HorizontalScrollTutorialViewControllerDelegate?
 
     private let scrollView: UIScrollView
@@ -73,7 +32,7 @@ class HorizontalScrollTutorialViewController: UIViewController {
 
     private var previousPage: Int?
 
-    init(tutorialItems: [HorizontalScrollTutorialItem], titleName: String? = nil, skipButtonName: String = "スキップ", nextButtonName: String = "次へ", doneButtonName: String = "閉じる", isPrefersStatusBarHidden: Bool = true) {
+    public init(tutorialItems: [HorizontalScrollTutorialItem], titleName: String? = nil, skipButtonName: String = "スキップ", nextButtonName: String = "次へ", doneButtonName: String = "閉じる", isPrefersStatusBarHidden: Bool = true) {
         scrollView = UIScrollView(frame: .zero)
         bottomLabel = UILabel(frame: .zero)
         skipButton = UIButton(frame: .zero)
@@ -168,11 +127,11 @@ class HorizontalScrollTutorialViewController: UIViewController {
         setButton(currentPage: pageControl.currentPage)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -186,7 +145,7 @@ class HorizontalScrollTutorialViewController: UIViewController {
 
     private var tutorialImageInformations = [TutorialImageInformation]()
 
-    override func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
         if let viewDidLayoutSubviewsScrollViewWidth = viewDidLayoutSubviewsScrollViewWidth
@@ -223,12 +182,12 @@ class HorizontalScrollTutorialViewController: UIViewController {
         viewDidLayoutSubviewsScrollViewWidth = scrollView.frame.width
     }
 
-    override func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    override var prefersStatusBarHidden: Bool {
+    override open var prefersStatusBarHidden: Bool {
         return isPrefersStatusBarHidden
     }
 
@@ -313,7 +272,7 @@ class HorizontalScrollTutorialViewController: UIViewController {
 }
 
 extension HorizontalScrollTutorialViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView.contentOffset.x > 0 else {
             pageControl.currentPage = 0
             return

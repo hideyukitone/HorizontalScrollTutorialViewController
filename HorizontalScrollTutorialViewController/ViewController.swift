@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HorizontalScrollTutorialKit
 
 class ViewController: UIViewController {
 

@@ -48,6 +48,16 @@
                ReferencedContainer = "container:HorizontalScrollTutorialViewController.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8733417A1F66CCC100B2B9EC"
+               BuildableName = "HorizontalScrollTutorialKitTests.xctest"
+               BlueprintName = "HorizontalScrollTutorialKitTests"
+               ReferencedContainer = "container:HorizontalScrollTutorialViewController.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
