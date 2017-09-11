@@ -9,10 +9,6 @@
 import UIKit
 import ImageIO
 
-protocol HorizontalScrollTutorialViewControllerDelegate {
-    func horizontalScrollTutorialViewControllerDidFinish()
-}
-
 enum HorizontalScrollTutorialItem {
     case image(UIImage)
     case images([UIImage])
@@ -53,7 +49,13 @@ enum HorizontalScrollTutorialItem {
     }
 }
 
+protocol HorizontalScrollTutorialViewControllerDelegate: class {
+    func horizontalScrollTutorialViewControllerDidFinish()
+}
+
 class HorizontalScrollTutorialViewController: UIViewController {
+    weak var delegate: HorizontalScrollTutorialViewControllerDelegate?
+
     private let scrollView: UIScrollView
     private let bottomLabel: UILabel
     private var viewDidLayoutSubviewsScrollViewWidth: CGFloat?
@@ -69,7 +71,7 @@ class HorizontalScrollTutorialViewController: UIViewController {
     fileprivate var doneButtonName: String
     private var isPrefersStatusBarHidden: Bool
 
-    var delegate: HorizontalScrollTutorialViewControllerDelegate?
+    private var previousPage: Int?
 
     init(tutorialItems: [HorizontalScrollTutorialItem], titleName: String? = nil, skipButtonName: String = "スキップ", nextButtonName: String = "次へ", doneButtonName: String = "閉じる", isPrefersStatusBarHidden: Bool = true) {
         scrollView = UIScrollView(frame: .zero)
@@ -248,8 +250,6 @@ class HorizontalScrollTutorialViewController: UIViewController {
     func pressPageControl() {
         movePage(page: pageControl.currentPage, animated: false)
     }
-
-    private var previousPage: Int?
 
     func changePageControl() {
         guard previousPage != pageControl.currentPage else {
