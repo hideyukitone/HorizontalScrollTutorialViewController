@@ -191,14 +191,14 @@ open class HorizontalScrollTutorialViewController: UIViewController {
         return isPrefersStatusBarHidden
     }
 
-    func pressClose() {
+    @objc func pressClose() {
         self.view.backgroundColor = .clear
         self.dismiss(animated: true) {
             self.delegate?.horizontalScrollTutorialViewControllerDidFinish()
         }
     }
 
-    func pressNext() {
+    @objc func pressNext() {
         if skipButton.isHidden {
             pressClose()
         }else {
@@ -206,11 +206,11 @@ open class HorizontalScrollTutorialViewController: UIViewController {
         }
     }
 
-    func pressPageControl() {
+    @objc func pressPageControl() {
         movePage(page: pageControl.currentPage, animated: false)
     }
 
-    func changePageControl() {
+    @objc func changePageControl() {
         guard previousPage != pageControl.currentPage else {
             return
         }
@@ -221,7 +221,9 @@ open class HorizontalScrollTutorialViewController: UIViewController {
             }
 
             tutorialItems[imageView.tag].getImagesInBackground { (images) in
-                imageView.animationImages = images
+                DispatchQueue.main.async {
+                    imageView.animationImages = images
+                }
 
                 DispatchQueue.main.async() { () -> Void in
                     guard imageView.tag == self.pageControl.currentPage else {

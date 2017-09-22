@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     }
 
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
     
     @IBAction func pressTutorialForGif(_ sender: Any) {
