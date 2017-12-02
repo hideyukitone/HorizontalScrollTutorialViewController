@@ -152,8 +152,7 @@ open class HorizontalScrollTutorialViewController: UIViewController {
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        if let viewDidLayoutSubviewsScrollViewWidth = viewDidLayoutSubviewsScrollViewWidth
-            , viewDidLayoutSubviewsScrollViewWidth == scrollView.frame.width {
+        if let viewDidLayoutSubviewsScrollViewWidth = viewDidLayoutSubviewsScrollViewWidth, viewDidLayoutSubviewsScrollViewWidth == scrollView.frame.width {
             return
         }
 
