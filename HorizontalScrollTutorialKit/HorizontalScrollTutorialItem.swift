@@ -27,7 +27,7 @@ public enum HorizontalScrollTutorialItem {
                     return []
             }
 
-            return (0...CGImageSourceGetCount(cgImageSource)).flatMap{CGImageSourceCreateImageAtIndex(cgImageSource, $0, nil)}.map{UIImage(cgImage: $0)}
+            return (0...CGImageSourceGetCount(cgImageSource)).flatMap{ CGImageSourceCreateImageAtIndex(cgImageSource, $0, nil) }.map{ UIImage(cgImage: $0) }
         }
     }
 
