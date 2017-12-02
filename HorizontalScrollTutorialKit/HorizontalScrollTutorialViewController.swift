@@ -15,22 +15,26 @@ protocol HorizontalScrollTutorialViewControllerDelegate: class {
 open class HorizontalScrollTutorialViewController: UIViewController {
     weak var delegate: HorizontalScrollTutorialViewControllerDelegate?
 
+    private struct TutorialImageInformation {
+        let first: UIImage?
+        let last: UIImage?
+        let count: Int
+    }
+
     private let scrollView: UIScrollView
     private let bottomLabel: UILabel
-    private var viewDidLayoutSubviewsScrollViewWidth: CGFloat?
-
-    fileprivate let skipButton: UIButton
-    fileprivate let nextButton: UIButton
-    fileprivate let pageControl: UIPageControl
-    fileprivate let tutorialItems: [HorizontalScrollTutorialItem]
-
+    private let skipButton: UIButton
+    private let nextButton: UIButton
+    private let pageControl: UIPageControl
+    private let tutorialItems: [HorizontalScrollTutorialItem]
     private var titleName: String?
     private var skipButtonName: String
-    fileprivate var nextButtonName: String
-    fileprivate var doneButtonName: String
+    private var nextButtonName: String
+    private var doneButtonName: String
     private var isPrefersStatusBarHidden: Bool
-
     private var previousPage: Int?
+    private var tutorialImageInformations = [TutorialImageInformation]()
+    private var viewDidLayoutSubviewsScrollViewWidth: CGFloat?
 
     public init(tutorialItems: [HorizontalScrollTutorialItem], titleName: String? = nil, skipButtonName: String = "スキップ", nextButtonName: String = "次へ", doneButtonName: String = "閉じる", isPrefersStatusBarHidden: Bool = true) {
         scrollView = UIScrollView(frame: .zero)
@@ -91,7 +95,7 @@ open class HorizontalScrollTutorialViewController: UIViewController {
         pageControl.bottomAnchor.constraint(equalTo: skipButton.bottomAnchor).isActive = true
         pageControl.heightAnchor.constraint(equalTo: skipButton.heightAnchor).isActive = true
         pageControl.addTarget(self, action: #selector(self.pressPageControl), for: .touchUpInside)
-        pageControl.addTarget(self, action: #selector(self.changePageControl), for: UIControlEvents.valueChanged)
+        pageControl.addTarget(self, action: #selector(self.changePageControl), for: .valueChanged)
 
         var topLabel: UILabel? = nil
         if let titleName = titleName {
@@ -107,7 +111,11 @@ open class HorizontalScrollTutorialViewController: UIViewController {
                 topLabel.translatesAutoresizingMaskIntoConstraints = false
                 topLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
                 topLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-                topLabel.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+                if #available(iOS 11.0, *) {
+                    topLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+                } else {
+                    topLabel.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+                }
                 topLabel.heightAnchor.constraint(equalTo: bottomLabel.heightAnchor).isActive = true
             }
         }
@@ -121,7 +129,11 @@ open class HorizontalScrollTutorialViewController: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: topLabel?.bottomAnchor ?? self.topLayoutGuide.bottomAnchor).isActive = true
+        if #available(iOS 11.0, *) {
+            scrollView.topAnchor.constraint(equalTo: topLabel?.bottomAnchor ?? self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        } else {
+            scrollView.topAnchor.constraint(equalTo: topLabel?.bottomAnchor ?? self.topLayoutGuide.bottomAnchor).isActive = true
+        }
         scrollView.bottomAnchor.constraint(equalTo: skipButton.topAnchor).isActive = true
 
         setButton(currentPage: pageControl.currentPage)
@@ -137,14 +149,6 @@ open class HorizontalScrollTutorialViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    private struct TutorialImageInformation {
-        let first: UIImage?
-        let last: UIImage?
-        let count: Int
-    }
-
-    private var tutorialImageInformations = [TutorialImageInformation]()
-
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -153,9 +157,12 @@ open class HorizontalScrollTutorialViewController: UIViewController {
             return
         }
 
-        scrollView.subviews.flatMap{$0 as? UIImageView}.forEach{$0.stopAnimating() ; $0.removeFromSuperview()}
+        scrollView.subviews.flatMap{ $0 as? UIImageView }.forEach { imageView in
+            imageView.stopAnimating()
+            imageView.removeFromSuperview()
+        }
 
-        for (i, tutorialItem) in tutorialItems.enumerated() {
+        tutorialItems.enumerated().forEach { i, tutorialItem in
             var images = tutorialItem.images
             let tutorialImageInformation = TutorialImageInformation(first: images.first, last: images.last, count: images.count)
             let imageView = UIImageView(image: images.first)
@@ -191,65 +198,48 @@ open class HorizontalScrollTutorialViewController: UIViewController {
         return isPrefersStatusBarHidden
     }
 
-    @objc func pressClose() {
+    @objc private func pressClose() {
         self.view.backgroundColor = .clear
         self.dismiss(animated: true) {
             self.delegate?.horizontalScrollTutorialViewControllerDidFinish()
         }
     }
 
-    @objc func pressNext() {
+    @objc private func pressNext() {
         if skipButton.isHidden {
             pressClose()
-        }else {
+        } else {
             movePage(page: pageControl.currentPage + 1, animated: true)
         }
     }
 
-    @objc func pressPageControl() {
+    @objc private func pressPageControl() {
         movePage(page: pageControl.currentPage, animated: false)
     }
 
-    @objc func changePageControl() {
-        guard previousPage != pageControl.currentPage else {
-            return
-        }
+    @objc private func changePageControl() {
+        guard previousPage != pageControl.currentPage else { return }
 
-        func startImageView(imageView: UIImageView) {
-            guard tutorialImageInformations[imageView.tag].count > 1 else {
-                return
-            }
-
-            tutorialItems[imageView.tag].getImagesInBackground { (images) in
-                DispatchQueue.main.async {
-                    imageView.animationImages = images
-                }
-
-                DispatchQueue.main.async() { () -> Void in
-                    guard imageView.tag == self.pageControl.currentPage else {
-                        return
-                    }
-
-                    imageView.image = self.tutorialImageInformations[imageView.tag].last
-                    imageView.startAnimating()
-                }
-            }
-        }
-
-        func endImageView(imageView: UIImageView) {
+        scrollView.subviews.flatMap{ $0 as? UIImageView }.forEach { imageView in
             imageView.stopAnimating()
             imageView.animationImages = []
 
             if let previousPage = previousPage, previousPage == imageView.tag {
                 imageView.image = tutorialImageInformations[imageView.tag].last
-            }else {
+            } else {
                 imageView.image = tutorialImageInformations[imageView.tag].first
             }
+
+            guard imageView.tag == pageControl.currentPage && tutorialImageInformations[imageView.tag].count > 1 else { return }
+
+            tutorialItems[imageView.tag].getImagesInBackground { images in
+                DispatchQueue.main.async() {
+                    imageView.animationImages = images
+                    imageView.image = self.tutorialImageInformations[imageView.tag].last
+                    imageView.startAnimating()
+                }
+            }
         }
-
-        scrollView.subviews.flatMap{$0 as? UIImageView}.forEach{endImageView(imageView: $0)}
-
-        scrollView.subviews.flatMap{$0 as? UIImageView}.filter{$0.tag == pageControl.currentPage}.forEach{startImageView(imageView: $0)}
 
         previousPage = pageControl.currentPage
     }
@@ -262,12 +252,12 @@ open class HorizontalScrollTutorialViewController: UIViewController {
         }
     }
 
-    fileprivate func setButton(currentPage: Int) {
+    private func setButton(currentPage: Int) {
         skipButton.isHidden = currentPage == tutorialItems.count - 1
 
         if skipButton.isHidden {
             nextButton.setTitle(doneButtonName, for: .normal)
-        }else {
+        } else {
             nextButton.setTitle(nextButtonName, for: .normal)
         }
     }
@@ -287,7 +277,7 @@ extension HorizontalScrollTutorialViewController: UIScrollViewDelegate {
     }
 }
 
-fileprivate extension UILabel {
+private extension UILabel {
     func setMinimumFontSize(ofSize: CGFloat) {
         self.adjustsFontSizeToFitWidth = true
         self.minimumScaleFactor = ofSize / self.font.pointSize
